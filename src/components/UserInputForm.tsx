@@ -10,6 +10,7 @@ import {useState, useContext, useEffect} from 'react';
 import {CareerContext} from './CareerContext';
 import {useFormStatus} from 'react-dom';
 import {useRouter} from 'next/navigation';
+import {Loader2} from 'lucide-react';
 
 const UserInputForm = () => {
   const [skills, setSkills] = useState('');
@@ -83,7 +84,14 @@ const UserInputForm = () => {
             Reset
           </Button>
           <Button onClick={handleSubmit} disabled={pending}>
-            {pending ? 'Getting Pathway...' : 'Get Pathway'}
+            {pending ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Getting Pathway...
+              </>
+            ) : (
+              'Get Pathway'
+            )}
           </Button>
         </CardFooter>
       </Card>
