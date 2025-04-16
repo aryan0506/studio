@@ -16,14 +16,14 @@ const ProvideCareerDetailsInputSchema = z.object({
 export type ProvideCareerDetailsInput = z.infer<typeof ProvideCareerDetailsInputSchema>;
 
 const ProvideCareerDetailsOutputSchema = z.object({
-  jobOutlook: z.string().describe('The job outlook for the career.'),
-  salaryExpectations: z.string().describe('The salary expectations for the career.'),
-  requiredEducation: z.string().describe('The required education for the career.'),
-  description: z.string().describe('A detailed description of the career.'),
-  learningSources: z.string().describe('Free and low-cost learning sources for this career.'),
-  jobRoles: z.string().describe('Common job roles in this career.'),
-  recommendedBooks: z.string().describe('Recommended books for this career.'),
-  motivationalQuote: z.string().describe('A motivational quote related to this career.'),
+  jobOutlook: z.string().describe('The job outlook for the career. Provide in Markdown format.'),
+  salaryExpectations: z.string().describe('The salary expectations for the career. Provide in Markdown format.'),
+  requiredEducation: z.string().describe('The required education for the career. Provide in Markdown format.'),
+  description: z.string().describe('A detailed description of the career. Provide in Markdown format.'),
+  learningSources: z.string().describe('Free and low-cost learning sources for this career. Provide in Markdown format.'),
+  jobRoles: z.string().describe('Common job roles in this career. Provide in Markdown format.'),
+  recommendedBooks: z.string().describe('Recommended books for this career. Provide in Markdown format.'),
+  motivationalQuote: z.string().describe('A motivational quote related to this career. Provide in Markdown format.'),
 });
 export type ProvideCareerDetailsOutput = z.infer<typeof ProvideCareerDetailsOutputSchema>;
 
@@ -40,25 +40,40 @@ const prompt = ai.definePrompt({
   },
   output: {
     schema: z.object({
-      jobOutlook: z.string().describe('The job outlook for the career.'),
-      salaryExpectations: z.string().describe('The salary expectations for the career.'),
-      requiredEducation: z.string().describe('The required education for the career.'),
-      description: z.string().describe('A detailed description of the career.'),
-      learningSources: z.string().describe('Free and low-cost learning sources for this career.'),
-      jobRoles: z.string().describe('Common job roles in this career.'),
-      recommendedBooks: z.string().describe('Recommended books for this career.'),
-      motivationalQuote: z.string().describe('A motivational quote related to this career.'),
+      jobOutlook: z.string().describe('The job outlook for the career. Provide in Markdown format.'),
+      salaryExpectations: z.string().describe('The salary expectations for the career. Provide in Markdown format.'),
+      requiredEducation: z.string().describe('The required education for the career. Provide in Markdown format.'),
+      description: z.string().describe('A detailed description of the career. Provide in Markdown format.'),
+      learningSources: z.string().describe('Free and low-cost most relevant source for learnings from internet. Provide in Markdown format.'),
+      jobRoles: z.string().describe('Common job roles in this career. Provide in Markdown format.'),
+      recommendedBooks: z.string().describe('Recommended books for this career. Provide in Markdown format.'),
+      motivationalQuote: z.string().describe('A motivational quote related to this career. Provide in Markdown format.'),
     }),
   },
-  prompt: `You are a career advisor. Provide detailed information about the following career, including:
-- Job outlook
-- Salary expectations
-- Required education
-- A detailed description
-- Free and low-cost most relevant source for learnings from internet
-- Job roles
-- Recommended books
-- A motivational quote related to that career
+  prompt: `You are a career advisor. Provide detailed information about the following career, using Markdown format:
+
+# Job Outlook
+Provide job outlook for career
+
+# Salary Expectations
+Provide salary expectations for career
+
+# Required Education
+Provide required education for career
+
+# Description
+Provide a detailed description of career
+
+# Learning Sources
+Provide free and low-cost most relevant source for learnings from internet
+
+# Job Roles
+Provide job roles
+
+# Recommended Books
+Provide books
+
+# A motivational quote related to that career
 
 Career: {{{careerName}}}`,
 });
