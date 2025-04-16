@@ -10,12 +10,12 @@ export default function Home() {
 
   return (
     <CareerContext.Provider value={{careers, setCareers}}>
-      <div className="min-h-screen bg-white text-foreground flex flex-col">
+      <div className="min-h-screen flex flex-col">
         <header className="bg-white p-6 shadow-md">
-          <h1 className="text-3xl font-bold text-primary text-center">
+          <h1 className="text-3xl font-bold text-gray-800 text-center">
             EDIFY Career Companion
           </h1>
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="text-sm text-gray-500 text-center">
             Your personalized AI-powered roadmap to a brighter future
           </p>
         </header>

@@ -56,7 +56,7 @@ const UserInputForm = () => {
 
   return (
     
-      <Card className="bg-card shadow-md rounded-lg">
+      <Card className="shadow-md rounded-lg">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Tell us about yourself</CardTitle>
         </CardHeader>

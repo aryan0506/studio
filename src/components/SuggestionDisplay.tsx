@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card';
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {useFormStatus} from 'react-dom';
 import {useContext, useState} from 'react';
 import {CareerContext} from './CareerContext';
@@ -91,7 +91,7 @@ const SuggestionDisplay = () => {
   }
 
   return (
-    <Card className="bg-card shadow-md rounded-lg h-full">
+    <Card className="shadow-md rounded-lg h-full">
       <CardHeader>
         <CardTitle className="text-2xl font-bold">Recommended Career Paths</CardTitle>
       </CardHeader>
