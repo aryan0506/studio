@@ -15,6 +15,8 @@ import {CareerContext} from './CareerContext';
 import {Button} from './ui/button';
 import {Loader2} from 'lucide-react';
 
+import ReactMarkdown from 'react-markdown';
+
 function CareerDetails({careerName}: { careerName: string }) {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -63,37 +65,37 @@ function CareerDetails({careerName}: { careerName: string }) {
 
   return (
     <CardContent className="mt-4">
-      <div className="mb-4 text-center">
-        <strong>Job Outlook:</strong>
-        <p className="mb-2">{details.jobOutlook}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Job Outlook:</strong>
+        <ReactMarkdown>{details.jobOutlook}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Salary Expectations:</strong>
-        <p className="mb-2">{details.salaryExpectations}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Salary Expectations:</strong>
+        <ReactMarkdown>{details.salaryExpectations}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Required Education:</strong>
-        <p className="mb-2">{details.requiredEducation}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Required Education:</strong>
+        <ReactMarkdown>{details.requiredEducation}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Description:</strong>
-        <p className="mb-2">{details.description}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Description:</strong>
+        <ReactMarkdown>{details.description}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Learning Sources:</strong>
-        <p className="mb-2">{details.learningSources}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Learning Sources:</strong>
+        <ReactMarkdown>{details.learningSources}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Job Roles:</strong>
-        <p className="mb-2">{details.jobRoles}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Job Roles:</strong>
+        <ReactMarkdown>{details.jobRoles}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Recommended Books:</strong>
-        <p className="mb-2">{details.recommendedBooks}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Recommended Books:</strong>
+        <ReactMarkdown>{details.recommendedBooks}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-center">
-        <strong>Motivational Quote:</strong>
-        <p className="mb-2">{details.motivationalQuote}</p>
+      <div className="mb-4 text-left">
+        <strong className="block mb-2">Motivational Quote:</strong>
+        <ReactMarkdown>{details.motivationalQuote}</ReactMarkdown>
       </div>
     </CardContent>
   );
@@ -118,7 +120,7 @@ const SuggestionDisplay = () => {
           {careers.map((career, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger>{career.title}</AccordionTrigger>
-              <AccordionContent className="text-center p-4 m-2">
+              <AccordionContent className="p-4 m-2">
                 <p>{career.description}</p>
                 <CareerDetails careerName={career.title} />
               </AccordionContent>
