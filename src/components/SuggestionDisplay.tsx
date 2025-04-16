@@ -120,7 +120,7 @@ const SuggestionDisplay = () => {
           {careers.map((career, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger>{career.title}</AccordionTrigger>
-              <AccordionContent className="p-4 m-2">
+              <AccordionContent className="p-4 m-2 text-sm md:text-base">
                 <p>{career.description}</p>
                 <CareerDetails careerName={career.title} />
               </AccordionContent>
