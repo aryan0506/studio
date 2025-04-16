@@ -5,11 +5,10 @@ import {useToast} from '@/hooks/use-toast';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
 import {Label} from '@/components/ui/label';
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {CareerContext} from './CareerContext';
 import {useFormStatus} from 'react-dom';
 import {useRouter} from 'next/navigation';
-import {useEffect} from 'react';
 import {Textarea} from '@/components/ui/textarea';
 
 const UserInputForm = () => {
@@ -20,6 +19,7 @@ const UserInputForm = () => {
   const {pending} = useFormStatus();
   const router = useRouter();
 
+  // Refresh the router after careers are set
   useEffect(() => {
     router.refresh();
   }, [setCareers, router]);
@@ -38,13 +38,11 @@ const UserInputForm = () => {
 
     try {
       const suggestions = await suggestCareers({skills, interests});
-      // Ensure that setCareers is called to update the careers state
-      setCareers(suggestions.careers);
+      setCareers(suggestions.careers); // Update the careers state
       toast({
         title: 'Success',
         description: 'Career suggestions generated!',
       });
-      router.refresh();
     } catch (error: any) {
       toast({
         title: 'Error',
@@ -55,6 +53,7 @@ const UserInputForm = () => {
     }
   };
 
+  // Access careers from the context to trigger useEffect
   return (
     
       <Card>
@@ -83,7 +82,7 @@ const UserInputForm = () => {
         </CardContent>
         <CardFooter className="flex justify-end">
           <Button onClick={handleSubmit} disabled={pending}>
-            {pending ? 'Submitting...' : 'Get Suggestions'}
+            {pending ? 'Get Suggestions' : 'Get Suggestions'}
           </Button>
         </CardFooter>
       </Card>
