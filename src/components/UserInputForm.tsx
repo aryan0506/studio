@@ -4,14 +4,12 @@ import {suggestCareers} from '@/ai/flows/suggest-careers';
 import {useToast} from '@/hooks/use-toast';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
-import {Input} from '@/components/ui/input';
+import {Textarea} from '@/components/ui/textarea';
 import {Label} from '@/components/ui/label';
 import {useState, useContext, useEffect} from 'react';
 import {CareerContext} from './CareerContext';
 import {useFormStatus} from 'react-dom';
 import {useRouter} from 'next/navigation';
-import {Textarea} from '@/components/ui/textarea';
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
 
 const UserInputForm = () => {
   const [skills, setSkills] = useState('');
