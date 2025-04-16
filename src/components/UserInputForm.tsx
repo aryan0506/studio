@@ -4,14 +4,17 @@ import {suggestCareers} from '@/ai/flows/suggest-careers';
 import {useToast} from '@/hooks/use-toast';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
+import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
 import {useState, useContext, useEffect} from 'react';
 import {CareerContext} from './CareerContext';
 import {useFormStatus} from 'react-dom';
 import {useRouter} from 'next/navigation';
 import {Textarea} from '@/components/ui/textarea';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
 
 const UserInputForm = () => {
+  const [name, setName] = useState('');
   const [skills, setSkills] = useState('');
   const [interests, setInterests] = useState('');
   const {setCareers} = useContext(CareerContext);
@@ -19,7 +22,6 @@ const UserInputForm = () => {
   const {pending} = useFormStatus();
   const router = useRouter();
 
-  // Refresh the router after careers are set
   useEffect(() => {
     router.refresh();
   }, [setCareers, router]);
@@ -53,36 +55,80 @@ const UserInputForm = () => {
     }
   };
 
-  // Access careers from the context to trigger useEffect
   return (
     
-      <Card>
+      <Card className="bg-card shadow-md rounded-lg">
         <CardHeader>
-          <CardTitle>Tell us about yourself</CardTitle>
+          <CardTitle className="text-2xl font-bold">Tell us about yourself</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4">
           <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="skills">Skills</Label>
+            <Label htmlFor="name">Your Name</Label>
+            <Input
+              id="name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col space-y-1.5">
+            <Label htmlFor="top-skill">Choose your top skill:</Label>
+            <Select>
+              <SelectTrigger id="top-skill">
+                <SelectValue placeholder="-- Select a skill --" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="programming">Programming</SelectItem>
+                <SelectItem value="writing">Writing</SelectItem>
+                <SelectItem value="design">Design</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col space-y-1.5">
+            <Label htmlFor="skills">Enter your skill</Label>
             <Textarea
               id="skills"
-              placeholder="Enter your skills (e.g., programming, writing)"
+              placeholder="Enter your skill"
               value={skills}
               onChange={(e) => setSkills(e.target.value)}
             />
           </div>
           <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="interests">Interests</Label>
+            <Label htmlFor="interests">Pick your interest area:</Label>
+            <Select>
+              <SelectTrigger id="interest-area">
+                <SelectValue placeholder="-- Select an interest --" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="technology">Technology</SelectItem>
+                <SelectItem value="art">Art</SelectItem>
+                <SelectItem value="science">Science</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-col space-y-1.5">
+            <Label htmlFor="interests">Enter your interest</Label>
             <Textarea
               id="interests"
-              placeholder="Enter your interests (e.g., technology, art)"
+              placeholder="Enter your interest"
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
             />
           </div>
+          <div className="flex flex-col space-y-1.5">
+            <Label htmlFor="goal">Describe your goal:</Label>
+            <Textarea
+              id="goal"
+              placeholder="e.g., Become a data scientist"
+            />
+          </div>
         </CardContent>
-        <CardFooter className="flex justify-end">
+        <CardFooter className="flex justify-between">
+          <Button variant="secondary" type="reset">
+            Reset
+          </Button>
           <Button onClick={handleSubmit} disabled={pending}>
-            {pending ? 'Get Suggestions' : 'Get Suggestions'}
+            {pending ? 'Getting Pathway...' : 'Get Pathway'}
           </Button>
         </CardFooter>
       </Card>

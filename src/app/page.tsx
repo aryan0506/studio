@@ -10,13 +10,21 @@ export default function Home() {
 
   return (
     <CareerContext.Provider value={{careers, setCareers}}>
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4 text-center">Career Compass</h1>
-        <div className="flex">
-          <div className="w-1/2 p-4">
+      <div className="min-h-screen bg-background text-foreground flex flex-col">
+        <header className="bg-card p-6 shadow-md">
+          <h1 className="text-3xl font-bold text-primary text-center">
+            EDIFY Career Companion
+          </h1>
+          <p className="text-sm text-muted-foreground text-center">
+            Your personalized AI-powered roadmap to a brighter future
+          </p>
+        </header>
+
+        <div className="flex flex-grow">
+          <div className="w-1/2 p-6">
             <UserInputForm />
           </div>
-          <div className="w-1/2 p-4">
+          <div className="w-1/2 p-6 bg-secondary rounded-r-lg">
             <SuggestionDisplay />
           </div>
         </div>
