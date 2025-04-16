@@ -14,7 +14,6 @@ import {Textarea} from '@/components/ui/textarea';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
 
 const UserInputForm = () => {
-  const [name, setName] = useState('');
   const [skills, setSkills] = useState('');
   const [interests, setInterests] = useState('');
   const {setCareers} = useContext(CareerContext);
@@ -61,29 +60,7 @@ const UserInputForm = () => {
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Tell us about yourself</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-4 bg-white">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="name">Your Name</Label>
-            <Input
-              id="name"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="top-skill">Choose your top skill:</Label>
-            <Select>
-              <SelectTrigger id="top-skill">
-                <SelectValue placeholder="-- Select a skill --" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="programming">Programming</SelectItem>
-                <SelectItem value="writing">Writing</SelectItem>
-                <SelectItem value="design">Design</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+        <CardContent className="grid gap-4">
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="skills">Enter your skill</Label>
             <Textarea
@@ -94,32 +71,12 @@ const UserInputForm = () => {
             />
           </div>
           <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="interests">Pick your interest area:</Label>
-            <Select>
-              <SelectTrigger id="interest-area">
-                <SelectValue placeholder="-- Select an interest --" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="technology">Technology</SelectItem>
-                <SelectItem value="art">Art</SelectItem>
-                <SelectItem value="science">Science</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex flex-col space-y-1.5">
             <Label htmlFor="interests">Enter your interest</Label>
             <Textarea
               id="interests"
               placeholder="Enter your interest"
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="goal">Describe your goal:</Label>
-            <Textarea
-              id="goal"
-              placeholder="e.g., Become a data scientist"
             />
           </div>
         </CardContent>
