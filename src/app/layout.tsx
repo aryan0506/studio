@@ -27,49 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SidebarProvider>
-          <Sidebar>
-            <SidebarHeader>
-              <h2 className="text-lg font-bold">Career Compass</h2>
-              <p className="text-sm text-muted-foreground">
-                AI Powered Career Guidance
-              </p>
-            </SidebarHeader>
-            
-            
-              
-                
-                  
-                    
-                      
-                      
-                    
-                  
-                
-                
-                  
-                    
-                      
-                      
-                    
-                  
-                
-                
-                  
-                    
-                      
-                      
-                    
-                  
-                
-              
-            
-            <SidebarFooter>© 2024 Career Compass</SidebarFooter>
-          </Sidebar>
-          <SidebarContent>{children}</SidebarContent>
-        </SidebarProvider>
+        {children}
       </body>
     </html>
   );
 }
+
 
