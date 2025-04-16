@@ -67,32 +67,38 @@ function CareerDetails({careerName}: { careerName: string }) {
 
   return (
     <CardContent className="mt-4">
-      <ul>
-        <li>
-          <strong>Job Outlook:</strong> {details.jobOutlook}
-        </li>
-        <li>
-          <strong>Salary Expectations:</strong> {details.salaryExpectations}
-        </li>
-        <li>
-          <strong>Required Education:</strong> {details.requiredEducation}
-        </li>
-        <li>
-          <strong>Description:</strong> {details.description}
-        </li>
-        <li>
-          <strong>Learning Sources:</strong> {details.learningSources}
-        </li>
-        <li>
-          <strong>Job Roles:</strong> {details.jobRoles}
-        </li>
-        <li>
-          <strong>Recommended Books:</strong> {details.recommendedBooks}
-        </li>
-        <li>
-          <strong>Motivational Quote:</strong> {details.motivationalQuote}
-        </li>
-      </ul>
+      <div className="mb-4">
+        <strong>Job Outlook:</strong>
+        <p className="mb-2">{details.jobOutlook}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Salary Expectations:</strong>
+        <p className="mb-2">{details.salaryExpectations}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Required Education:</strong>
+        <p className="mb-2">{details.requiredEducation}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Description:</strong>
+        <p className="mb-2">{details.description}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Learning Sources:</strong>
+        <p className="mb-2">{details.learningSources}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Job Roles:</strong>
+        <p className="mb-2">{details.jobRoles}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Recommended Books:</strong>
+        <p className="mb-2">{details.recommendedBooks}</p>
+      </div>
+      <div className="mb-4">
+        <strong>Motivational Quote:</strong>
+        <p className="mb-2">{details.motivationalQuote}</p>
+      </div>
     </CardContent>
   );
 }
