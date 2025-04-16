@@ -35,28 +35,35 @@ export default function RootLayout({
                 AI Powered Career Guidance
               </p>
             </SidebarHeader>
-            <SidebarContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton href="/" isActive>
-                    <Home className="mr-2 h-4 w-4" />
-                    <span>Home</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton href="/about">
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    <span>About</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton href="/resources">
-                    <GraduationCap className="mr-2 h-4 w-4" />
-                    <span>Resources</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarContent>
+            
+            
+              
+                
+                  
+                    
+                      
+                      
+                    
+                  
+                
+                
+                  
+                    
+                      
+                      
+                    
+                  
+                
+                
+                  
+                    
+                      
+                      
+                    
+                  
+                
+              
+            
             <SidebarFooter>© 2024 Career Compass</SidebarFooter>
           </Sidebar>
           <SidebarContent>{children}</SidebarContent>
@@ -65,3 +72,4 @@ export default function RootLayout({
     </html>
   );
 }
+
