@@ -4,7 +4,6 @@ import {suggestCareers} from '@/ai/flows/suggest-careers';
 import {useToast} from '@/hooks/use-toast';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
-import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
 import {useState, useContext} from 'react';
 import {CareerContext} from './CareerContext';
@@ -45,6 +44,7 @@ const UserInputForm = () => {
         title: 'Success',
         description: 'Career suggestions generated!',
       });
+      router.refresh();
     } catch (error: any) {
       toast({
         title: 'Error',
