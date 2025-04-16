@@ -10,12 +10,12 @@ export default function Home() {
 
   return (
     <CareerContext.Provider value={{careers, setCareers}}>
-      <div className="min-h-screen flex">
-        <div className="w-1/2 p-6">
+      <div className="min-h-screen flex flex-col md:flex-row">
+        <div className="w-full md:w-1/2 p-4">
           <UserInputForm />
         </div>
         {careers.length > 0 && (
-          <div className="w-1/2 p-6">
+          <div className="w-full md:w-1/2 p-4">
             <SuggestionDisplay />
           </div>
         )}
