@@ -8,16 +8,15 @@ import {Textarea} from '@/components/ui/textarea';
 import {Label} from '@/components/ui/label';
 import {useState, useContext, useEffect} from 'react';
 import {CareerContext} from './CareerContext';
-import {useFormStatus} from 'react-dom';
 import {useRouter} from 'next/navigation';
 import {Loader2} from 'lucide-react';
 
 const UserInputForm = () => {
   const [skills, setSkills] = useState('');
   const [interests, setInterests] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // Loading state
   const {setCareers} = useContext(CareerContext);
   const {toast} = useToast();
-  const {pending} = useFormStatus();
   const router = useRouter();
 
   useEffect(() => {
@@ -35,7 +34,7 @@ const UserInputForm = () => {
       });
       return;
     }
-
+    setIsLoading(true); // Start loading
     try {
       const suggestions = await suggestCareers({skills, interests});
       setCareers(suggestions.careers); // Update the careers state
@@ -50,6 +49,8 @@ const UserInputForm = () => {
           error?.message || 'Failed to generate career suggestions. Please try again.',
         variant: 'destructive',
       });
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
@@ -83,8 +84,8 @@ const UserInputForm = () => {
           <Button variant="secondary" type="reset">
             Reset
           </Button>
-          <Button onClick={handleSubmit} disabled={pending}>
-            {pending ? (
+          <Button onClick={handleSubmit} disabled={isLoading}>
+            {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 Getting Pathway...
