@@ -48,11 +48,7 @@ function CareerDetails({careerName}: { careerName: string }) {
 
   if (!details) {
     return (
-      <Button
-        variant="secondary"
-        onClick={fetchDetails}
-        disabled={pending}
-      >
+      <Button variant="secondary" onClick={fetchDetails} disabled={pending}>
         {pending ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -67,35 +63,35 @@ function CareerDetails({careerName}: { careerName: string }) {
 
   return (
     <CardContent className="mt-4">
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Job Outlook:</strong>
         <p className="mb-2">{details.jobOutlook}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Salary Expectations:</strong>
         <p className="mb-2">{details.salaryExpectations}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Required Education:</strong>
         <p className="mb-2">{details.requiredEducation}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Description:</strong>
         <p className="mb-2">{details.description}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Learning Sources:</strong>
         <p className="mb-2">{details.learningSources}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Job Roles:</strong>
         <p className="mb-2">{details.jobRoles}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Recommended Books:</strong>
         <p className="mb-2">{details.recommendedBooks}</p>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 text-center">
         <strong>Motivational Quote:</strong>
         <p className="mb-2">{details.motivationalQuote}</p>
       </div>
@@ -113,7 +109,9 @@ const SuggestionDisplay = () => {
   return (
     <Card className="shadow-md rounded-lg h-full">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">Recommended Career Paths</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">
+          Recommended Career Paths
+        </CardTitle>
       </CardHeader>
       <CardContent className="text-sm">
         <Accordion type="single" collapsible>
@@ -121,7 +119,7 @@ const SuggestionDisplay = () => {
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger>{career.title}</AccordionTrigger>
               <AccordionContent className="text-center">
-                {career.description}
+                <p>{career.description}</p>
                 <CareerDetails careerName={career.title} />
               </AccordionContent>
             </AccordionItem>
@@ -133,5 +131,3 @@ const SuggestionDisplay = () => {
 };
 
 export default SuggestionDisplay;
-
-    
