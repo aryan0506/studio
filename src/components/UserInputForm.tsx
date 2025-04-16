@@ -39,6 +39,7 @@ const UserInputForm = () => {
 
     try {
       const suggestions = await suggestCareers({skills, interests});
+      // Ensure that setCareers is called to update the careers state
       setCareers(suggestions.careers);
       toast({
         title: 'Success',
@@ -91,5 +92,3 @@ const UserInputForm = () => {
 };
 
 export default UserInputForm;
-
-    
