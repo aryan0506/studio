@@ -12,12 +12,15 @@ export default function Home() {
     <CareerContext.Provider value={{careers, setCareers}}>
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4 text-center">Career Compass</h1>
-        <UserInputForm />
-        <SuggestionDisplay />
+        <div className="flex">
+          <div className="w-1/2 p-4">
+            <UserInputForm />
+          </div>
+          <div className="w-1/2 p-4">
+            <SuggestionDisplay />
+          </div>
+        </div>
       </div>
     </CareerContext.Provider>
   );
 }
-
-
-    
