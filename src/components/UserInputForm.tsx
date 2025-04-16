@@ -60,7 +60,7 @@ const UserInputForm = () => {
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Tell us about yourself</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-4">
+        <CardContent className="grid gap-2 p-2">
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="skills">Enter your skill</Label>
             <Textarea
@@ -80,7 +80,7 @@ const UserInputForm = () => {
             />
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
+        <CardFooter className="flex justify-between p-2">
           <Button variant="secondary" type="reset">
             Reset
           </Button>

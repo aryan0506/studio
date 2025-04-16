@@ -65,36 +65,36 @@ function CareerDetails({careerName}: { careerName: string }) {
 
   return (
     <CardContent className="mt-4">
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Job Outlook:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Job Outlook:</strong>
         <ReactMarkdown>{details.jobOutlook}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Salary Expectations:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Salary Expectations:</strong>
         <ReactMarkdown>{details.salaryExpectations}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Required Education:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Required Education:</strong>
         <ReactMarkdown>{details.requiredEducation}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Description:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Description:</strong>
         <ReactMarkdown>{details.description}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Learning Sources:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Learning Sources:</strong>
         <ReactMarkdown>{details.learningSources}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Job Roles:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Job Roles:</strong>
         <ReactMarkdown>{details.jobRoles}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Recommended Books:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Recommended Books:</strong>
         <ReactMarkdown>{details.recommendedBooks}</ReactMarkdown>
       </div>
-      <div className="mb-4 text-left">
-        <strong className="block mb-2">Motivational Quote:</strong>
+      <div className="mb-2 text-left">
+        <strong className="block mb-1">Motivational Quote:</strong>
         <ReactMarkdown>{details.motivationalQuote}</ReactMarkdown>
       </div>
     </CardContent>
@@ -120,7 +120,7 @@ const SuggestionDisplay = () => {
           {careers.map((career, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger>{career.title}</AccordionTrigger>
-              <AccordionContent className="p-4 m-2 text-sm md:text-base">
+              <AccordionContent className="p-2 m-1 text-sm md:text-base">
                 <p>{career.description}</p>
                 <CareerDetails careerName={career.title} />
               </AccordionContent>
