@@ -6,25 +6,24 @@ import {Button} from '@/components/ui/button';
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {CareerContext} from './CareerContext';
 import {useFormStatus} from 'react-dom';
 import {useRouter} from 'next/navigation';
 import {useEffect} from 'react';
-import {createContext} from 'react';
 import {Textarea} from '@/components/ui/textarea';
 
 const UserInputForm = () => {
   const [skills, setSkills] = useState('');
   const [interests, setInterests] = useState('');
-  const [careers, setCareers] = useState([]);
+  const {setCareers} = useContext(CareerContext);
   const {toast} = useToast();
   const {pending} = useFormStatus();
   const router = useRouter();
 
   useEffect(() => {
     router.refresh();
-  }, [careers, router]);
+  }, [setCareers, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,7 +55,7 @@ const UserInputForm = () => {
   };
 
   return (
-    <CareerContext.Provider value={{careers, setCareers}}>
+    
       <Card>
         <CardHeader>
           <CardTitle>Tell us about yourself</CardTitle>
@@ -87,8 +86,10 @@ const UserInputForm = () => {
           </Button>
         </CardFooter>
       </Card>
-    </CareerContext.Provider>
+    
   );
 };
 
 export default UserInputForm;
+
+    
