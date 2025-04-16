@@ -79,6 +79,18 @@ function CareerDetails({careerName}: { careerName: string }) {
       <p>
         <strong>Description:</strong> {details.description}
       </p>
+       <p>
+        <strong>Learning Sources:</strong> {details.learningSources}
+      </p>
+      <p>
+        <strong>Job Roles:</strong> {details.jobRoles}
+      </p>
+      <p>
+        <strong>Recommended Books:</strong> {details.recommendedBooks}
+      </p>
+      <p>
+        <strong>Motivational Quote:</strong> {details.motivationalQuote}
+      </p>
     </CardContent>
   );
 }

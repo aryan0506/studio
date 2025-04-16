@@ -20,6 +20,10 @@ const ProvideCareerDetailsOutputSchema = z.object({
   salaryExpectations: z.string().describe('The salary expectations for the career.'),
   requiredEducation: z.string().describe('The required education for the career.'),
   description: z.string().describe('A detailed description of the career.'),
+  learningSources: z.string().describe('Free and low-cost learning sources for this career.'),
+  jobRoles: z.string().describe('Common job roles in this career.'),
+  recommendedBooks: z.string().describe('Recommended books for this career.'),
+  motivationalQuote: z.string().describe('A motivational quote related to this career.'),
 });
 export type ProvideCareerDetailsOutput = z.infer<typeof ProvideCareerDetailsOutputSchema>;
 
@@ -40,9 +44,21 @@ const prompt = ai.definePrompt({
       salaryExpectations: z.string().describe('The salary expectations for the career.'),
       requiredEducation: z.string().describe('The required education for the career.'),
       description: z.string().describe('A detailed description of the career.'),
+      learningSources: z.string().describe('Free and low-cost learning sources for this career.'),
+      jobRoles: z.string().describe('Common job roles in this career.'),
+      recommendedBooks: z.string().describe('Recommended books for this career.'),
+      motivationalQuote: z.string().describe('A motivational quote related to this career.'),
     }),
   },
-  prompt: `You are a career advisor. Provide detailed information about the following career, including job outlook, salary expectations, required education, and a detailed description. 
+  prompt: `You are a career advisor. Provide detailed information about the following career, including:
+- Job outlook
+- Salary expectations
+- Required education
+- A detailed description
+- Free and low-cost most relevant source for learnings from internet
+- Job roles
+- Recommended books
+- A motivational quote related to that career
 
 Career: {{{careerName}}}`,
 });
