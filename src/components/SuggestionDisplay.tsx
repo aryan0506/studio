@@ -1,3 +1,4 @@
+
 'use client';
 
 import {provideCareerDetails} from '@/ai/flows/provide-career-details';
@@ -84,25 +85,38 @@ function CareerDetails({careerName}: { careerName: string }) {
 }
 
 const SuggestionDisplay = () => {
+  const {careers} = useContext(CareerContext);
+
+  if (!careers || careers.length === 0) {
+    return (
+      <Card className="bg-card shadow-md rounded-lg h-full">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold">Recommended Career Path</CardTitle>
+        </CardHeader>
+        <CardContent className="text-sm">
+          No career suggestions yet. Please submit the form.
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="bg-card shadow-md rounded-lg h-full">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold">Recommended Career Path</CardTitle>
+        <CardTitle className="text-2xl font-bold">Recommended Career Paths</CardTitle>
       </CardHeader>
       <CardContent className="text-sm">
-        <p className="font-bold">Months 1-3</p>
-        <ul className="list-disc pl-5 mb-4">
-          <li>Strengthen Python &amp; FastAPI: Build small projects to gain hands-on experience.</li>
-          <li>Learn Databases: Master a relational (PostgreSQL/MySQL) and a NoSQL database (MongoDB).</li>
-          <li>Version Control: Get comfortable with Git and GitHub.</li>
-        </ul>
-
-        <p className="font-bold">Months 4-6</p>
-        <ul className="list-disc pl-5">
-          <li>Major Project: Build a full-stack application focusing on API development.</li>
-          <li>Cloud Platform Basics: Learn the basics of AWS, Azure, or GCP.</li>
-          <li>Internship Applications: Focus on showcasing your portfolio projects.</li>
-        </ul>
+        <Accordion type="single" collapsible>
+          {careers.map((career, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger>{career.title}</AccordionTrigger>
+              <AccordionContent>
+                {career.description}
+                <CareerDetails careerName={career.title} />
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </CardContent>
     </Card>
   );
