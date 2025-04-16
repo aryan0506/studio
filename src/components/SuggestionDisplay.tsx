@@ -67,30 +67,32 @@ function CareerDetails({careerName}: { careerName: string }) {
 
   return (
     <CardContent className="mt-4">
-      <p>
-        <strong>Job Outlook:</strong> {details.jobOutlook}
-      </p>
-      <p>
-        <strong>Salary Expectations:</strong> {details.salaryExpectations}
-      </p>
-      <p>
-        <strong>Required Education:</strong> {details.requiredEducation}
-      </p>
-      <p>
-        <strong>Description:</strong> {details.description}
-      </p>
-       <p>
-        <strong>Learning Sources:</strong> {details.learningSources}
-      </p>
-      <p>
-        <strong>Job Roles:</strong> {details.jobRoles}
-      </p>
-      <p>
-        <strong>Recommended Books:</strong> {details.recommendedBooks}
-      </p>
-      <p>
-        <strong>Motivational Quote:</strong> {details.motivationalQuote}
-      </p>
+      <ul>
+        <li>
+          <strong>Job Outlook:</strong> {details.jobOutlook}
+        </li>
+        <li>
+          <strong>Salary Expectations:</strong> {details.salaryExpectations}
+        </li>
+        <li>
+          <strong>Required Education:</strong> {details.requiredEducation}
+        </li>
+        <li>
+          <strong>Description:</strong> {details.description}
+        </li>
+        <li>
+          <strong>Learning Sources:</strong> {details.learningSources}
+        </li>
+        <li>
+          <strong>Job Roles:</strong> {details.jobRoles}
+        </li>
+        <li>
+          <strong>Recommended Books:</strong> {details.recommendedBooks}
+        </li>
+        <li>
+          <strong>Motivational Quote:</strong> {details.motivationalQuote}
+        </li>
+      </ul>
     </CardContent>
   );
 }
