@@ -61,7 +61,7 @@ const UserInputForm = () => {
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Tell us about yourself</CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-4">
+        <CardContent className="grid gap-4 bg-white">
           <div className="flex flex-col space-y-1.5">
             <Label htmlFor="name">Your Name</Label>
             <Input
