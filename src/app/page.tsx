@@ -10,8 +10,8 @@ export default function Home() {
 
   return (
     <CareerContext.Provider value={{careers, setCareers}}>
-      <div className="min-h-screen bg-background text-foreground flex flex-col">
-        <header className="bg-card p-6 shadow-md">
+      <div className="min-h-screen bg-white text-foreground flex flex-col">
+        <header className="bg-white p-6 shadow-md">
           <h1 className="text-3xl font-bold text-primary text-center">
             EDIFY Career Companion
           </h1>
@@ -21,13 +21,15 @@ export default function Home() {
         </header>
 
         <div className="flex flex-grow">
-          <div className="w-1/2 p-6">
+          <div className="w-full p-6">
             <UserInputForm />
           </div>
-          <div className="w-1/2 p-6 bg-secondary rounded-r-lg">
+        </div>
+        {careers.length > 0 && (
+          <div className="w-full p-6">
             <SuggestionDisplay />
           </div>
-        </div>
+        )}
       </div>
     </CareerContext.Provider>
   );

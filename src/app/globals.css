@@ -10,62 +10,46 @@ body {
 @layer base {
   :root {
     --background: 255 255 255; /* White */
-    --foreground: 0 0 0; /* Black */
+    --foreground: 50 50 50; /* Dark Gray */
     --card: 255 255 255;
-    --card-foreground: 0 0 0;
+    --card-foreground: 50 50 50;
     --popover: 255 255 255;
-    --popover-foreground: 0 0 0;
-    --primary: 0 0 0; /* Black */
-    --primary-foreground: 255 255 255; /* White */
-    --secondary: 220 220 220; /* Light Gray */
-    --secondary-foreground: 0 0 0;
-    --muted: 200 200 200; /* Gray */
+    --popover-foreground: 50 50 50;
+    --primary: 30 30 30; /* Very Dark Gray */
+    --primary-foreground: 230 230 230; /* Very Light Gray */
+    --secondary: 240 240 240; /* Light Gray */
+    --secondary-foreground: 50 50 50;
+    --muted: 220 220 220; /* Gray */
     --muted-foreground: 100 100 100; /* Dark Gray */
-    --accent: 50 150 250; /* Blue */
-    --accent-foreground: 255 255 255;
+    --accent: 150 150 150; /* Light Gray */
+    --accent-foreground: 30 30 30;
     --destructive: 220 53 69;
     --destructive-foreground: 255 255 255;
     --border: 200 200 200;
     --input: 240 240 240;
-    --ring: 50 150 250;
+    --ring: 50 50 50;
     --radius: 0.5rem;
-    --sidebar-background: 255 255 255;
-    --sidebar-foreground: 0 0 0;
-    --sidebar-primary: 0 0 0;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 50 150 250;
-    --sidebar-accent-foreground: 255 255 255;
-    --sidebar-border: 200 200 200;
-    --sidebar-ring: 50 150 250;
   }
   .dark {
-    --background: 0 0 0; /* Black */
-    --foreground: 255 255 255; /* White */
-    --card: 20 20 20;
-    --card-foreground: 255 255 255;
-    --popover: 20 20 20;
-    --popover-foreground: 255 255 255;
+    --background: 20 20 20; /* Very Dark Gray */
+    --foreground: 230 230 230; /* Very Light Gray */
+    --card: 30 30 30;
+    --card-foreground: 230 230 230;
+    --popover: 30 30 30;
+    --popover-foreground: 230 230 230;
     --primary: 255 255 255; /* White */
     --primary-foreground: 0 0 0; /* Black */
     --secondary: 50 50 50; /* Dark Gray */
-    --secondary-foreground: 255 255 255;
+    --secondary-foreground: 230 230 230;
     --muted: 70 70 70; /* Gray */
     --muted-foreground: 150 150 150; /* Light Gray */
-    --accent: 50 150 250;
-    --accent-foreground: 0 0 0;
+    --accent: 70 70 70;
+    --accent-foreground: 230 230 230;
     --destructive: 220 53 69;
     --destructive-foreground: 255 255 255;
     --border: 73 73 74;
     --input: 50 50 50;
-    --ring: 50 150 250;
-    --sidebar-background: 20 20 20;
-    --sidebar-foreground: 255 255 255;
-    --sidebar-primary: 255 255 255;
-    --sidebar-primary-foreground: 0 0 0;
-    --sidebar-accent: 50 150 250;
-    --sidebar-accent-foreground: 0 0 0;
-    --sidebar-border: 73 73 74;
-    --sidebar-ring: 50 150 250;
+    --ring: 230 230 230;
   }
 }
 
@@ -77,3 +61,4 @@ body {
     @apply bg-background text-foreground;
   }
 }
+

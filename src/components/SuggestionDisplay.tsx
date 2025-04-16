@@ -1,4 +1,3 @@
-
 'use client';
 
 import {provideCareerDetails} from '@/ai/flows/provide-career-details';
@@ -88,16 +87,7 @@ const SuggestionDisplay = () => {
   const {careers} = useContext(CareerContext);
 
   if (!careers || careers.length === 0) {
-    return (
-      <Card className="bg-card shadow-md rounded-lg h-full">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold">Recommended Career Path</CardTitle>
-        </CardHeader>
-        <CardContent className="text-sm">
-          No career suggestions yet. Please submit the form.
-        </CardContent>
-      </Card>
-    );
+    return null;
   }
 
   return (
