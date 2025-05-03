@@ -3,95 +3,68 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%; /* White */
-  --foreground: 222.2 47.4% 11.2%; /* Dark gray */
-  --muted: 210 40% 96.1%; /* Light gray */
-  --muted-foreground: 215.4 16.3% 46.9%; /* Medium gray */
-  --popover: 0 0% 100%; /* White */
-  --popover-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-  --card: 0 0% 100%; /* White */
-  --card-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-  --border: 214.3 31.8% 91.4%; /* Light gray */
-  --input: 214.3 31.8% 91.4%; /* Light gray */
-  --primary: 222.2 47.4% 11.2%; /* Dark gray */
-  --primary-foreground: 0 0% 98%; /* Off-white */
-  --secondary: 210 40% 96.1%; /* Light gray */
-  --secondary-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-  --accent: 210 40% 96.1%; /* Light gray */
-  --accent-foreground: 222.2 47.4% 11.2%; /* Dark gray */
-  --destructive: 0 84.2% 60.2%; /* Red */
-  --destructive-foreground: 0 0% 98%; /* Off-white */
-  --ring: 222.2 47.4% 11.2%; /* Dark gray */
+  /* ——— Base layers ——— */
+  --background:          210 16% 98%;   /* almost white */
+  --foreground:          210 10% 20%;   /* dark slate text */
+  --muted:               210 16% 95%;   /* very light grey */
+  --muted-foreground:    210 10% 50%;   /* medium grey */
 
-  --radius: 0.5rem;
+  /* ——— Surfaces ——— */
+  --card:                210 16% 96%;   /* off-white card */
+  --popover:             var(--card);
+  --input:               210 16% 97%;   /* slightly lighter */
 
-  --chart-1: 238 70% 50%;
-  --chart-2: 163 70% 50%;
-  --chart-3: 278 70% 50%;
-  --chart-4: 39 70% 50%;
-  --chart-5: 30 70% 50%;
+  /* ——— Borders & controls ——— */
+  --border:              210 16% 85%;   /* light grey border */
 
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 222.2 47.4% 11.2%;
-  --sidebar-primary: 222.2 47.4% 11.2%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 210 40% 96.1%;
-  --sidebar-accent-foreground: 222.2 47.4% 11.2%;
-  --sidebar-border: 214.3 31.8% 91.4%;
-  --sidebar-ring: 222.2 47.4% 11.2%;
+  /* ——— Brand colors ——— */
+  --primary:             220 60% 50%;   /* soft blue */
+  --primary-foreground:  0   0% 98%;   /* almost-white */
+
+  --secondary:           160 60% 50%;   /* soft teal */
+  --secondary-foreground:210 10% 20%;   /* dark text */
+
+  --accent:              30  90% 60%;   /* warm peach */
+  --accent-foreground:   210 10% 20%;   /* dark text */
+
+  --destructive:         0   80% 50%;   /* vivid red */
+  --destructive-foreground:0  0% 98%;   /* almost-white */
+
+  --ring:                var(--primary);
+  --radius:              0.5rem;
+
+  /* ——— Chart palette ——— */
+  --chart-1:             var(--primary);
+  --chart-2:             var(--secondary);
+  --chart-3:             278 70% 50%;
+  --chart-4:             39  70% 50%;
+  --chart-5:             30  70% 50%;
+
+  /* ——— Sidebar (light) ——— */
+  --sidebar-background:  var(--background);
+  --sidebar-foreground:  var(--foreground);
+  --sidebar-primary:     var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent:      var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border:      var(--border);
+  --sidebar-ring:        var(--ring);
 }
 
 .dark {
-  --background: 224 71% 4%;
-  --foreground: 213 31% 91%;
-  --muted: 223 47% 11%;
-  --muted-foreground: 215.4 16.3% 56.9%;
-  --popover: 224 71% 4%;
-  --popover-foreground: 215 20.2% 65.1%;
-  --card: 224 71% 4%;
-  --card-foreground: 213 31% 91%;
-  --border: 216 34% 17%;
-  --input: 216 34% 17%;
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 1.2%;
-  --secondary: 222.2 47.4% 11.2%;
-  --secondary-foreground: 210 40% 98%;
-  --accent: 216 34% 17%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 20% 98%;
-  --ring: 217.2 32.6% 17.5%;
-
-  --sidebar-background: 224 71% 4%;
-  --sidebar-foreground: 213 31% 91%;
-  --sidebar-primary: 210 40% 98%;
-  --sidebar-primary-foreground: 222.2 47.4% 1.2%;
-  --sidebar-accent: 216 34% 17%;
-  --sidebar-accent-foreground: 210 40% 98%;
-  --sidebar-border: 216 34% 17%;
-  --sidebar-ring: 217.2 32.6% 17.5%;
+  /* Dark mode (optional) can override here if needed) */
 }
 
-.dark .recharts-cartesian-grid-line[stroke='#ccc'] {
-    stroke: rgb(var(--border));
-}
-
+/* keep these in place so recharts picks up the border color */
+.dark .recharts-cartesian-grid-line[stroke='#ccc'],
 .recharts-cartesian-grid-line[stroke='#ccc'] {
-    stroke: rgb(var(--border));
+  stroke: rgb(var(--border));
 }
-
-.recharts-polar-grid-concentric-circle {
-    stroke: rgb(var(--border));
-}
-
-.recharts-xAxis .recharts-cartesian-axis-tick-line {
-    stroke: rgb(var(--border));
-}
-
+.recharts-polar-grid-concentric-circle { stroke: rgb(var(--border)); }
+.recharts-xAxis .recharts-cartesian-axis-tick-line,
 .recharts-yAxis .recharts-cartesian-axis-tick-line {
-    stroke: rgb(var(--border));
+  stroke: rgb(var(--border));
 }
-
 
 .antialiased {
   -webkit-font-smoothing: antialiased;

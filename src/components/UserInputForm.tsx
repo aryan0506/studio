@@ -1,103 +1,120 @@
-'use client';
+'use client'
 
-import {suggestCareers} from '@/ai/flows/suggest-careers';
-import {useToast} from '@/hooks/use-toast';
-import {Button} from '@/components/ui/button';
-import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
-import {Textarea} from '@/components/ui/textarea';
-import {Label} from '@/components/ui/label';
-import {useState, useContext, useEffect} from 'react';
-import {CareerContext} from './CareerContext';
-import {useRouter} from 'next/navigation';
-import {Loader2} from 'lucide-react';
+import { suggestCareers } from '@/ai/flows/suggest-careers'
+import { useToast } from '@/hooks/use-toast'
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Textarea } from '@/components/ui/textarea'
+import { Label } from '@/components/ui/label'
+import { useState, useContext, useEffect } from 'react'
+import { CareerContext } from './CareerContext'
+import { useRouter } from 'next/navigation'
+import { Loader2 } from 'lucide-react'
 
 const UserInputForm = () => {
-  const [skills, setSkills] = useState('');
-  const [interests, setInterests] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // Loading state
-  const {setCareers} = useContext(CareerContext);
-  const {toast} = useToast();
-  const router = useRouter();
+  const [skills, setSkills] = useState('')
+  const [interests, setInterests] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const { setCareers } = useContext(CareerContext)
+  const { toast } = useToast()
+  const router = useRouter()
 
   useEffect(() => {
-    router.refresh();
-  }, [setCareers, router]);
+    router.refresh()
+  }, [setCareers, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+    e.preventDefault()
     if (!skills || !interests) {
-      toast({
+      return toast({
         title: 'Error',
         description: 'Please fill in both skills and interests.',
         variant: 'destructive',
-      });
-      return;
+      })
     }
-    setIsLoading(true); // Start loading
+    setIsLoading(true)
     try {
-      const suggestions = await suggestCareers({skills, interests});
-      setCareers(suggestions.careers); // Update the careers state
+      const suggestions = await suggestCareers({ skills, interests })
+      setCareers(suggestions.careers)
       toast({
         title: 'Success',
         description: 'Career suggestions generated!',
-      });
+      })
     } catch (error: any) {
       toast({
         title: 'Error',
         description:
-          error?.message || 'Failed to generate career suggestions. Please try again.',
+          error?.message ||
+          'Failed to generate career suggestions. Please try again.',
         variant: 'destructive',
-      });
+      })
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
-    
-      <Card className="shadow-md rounded-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold">Tell us about yourself</CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-2 p-2">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="skills">Enter your skill</Label>
-            <Textarea
-              id="skills"
-              placeholder="Enter your skill"
-              value={skills}
-              onChange={(e) => setSkills(e.target.value)}
-            />
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="interests">Enter your interest</Label>
-            <Textarea
-              id="interests"
-              placeholder="Enter your interest"
-              value={interests}
-              onChange={(e) => setInterests(e.target.value)}
-            />
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between p-2">
-          <Button variant="secondary" type="reset">
-            Reset
-          </Button>
-          <Button onClick={handleSubmit} disabled={isLoading}>
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Getting Pathway...
-              </>
-            ) : (
-              'Get Pathway'
-            )}
-          </Button>
-        </CardFooter>
-      </Card>
-    
-  );
-};
+    <Card className="bg-slate-700 text-slate-100 shadow-lg rounded-lg max-w-md mx-auto">
+      <CardHeader>
+        <CardTitle className="text-2xl font-semibold text-center">
+          Tell Us About Yourself
+        </CardTitle>
+      </CardHeader>
 
-export default UserInputForm;
+      <CardContent className="space-y-4 p-6">
+        <div>
+          <Label htmlFor="skills" className="text-slate-200">
+            Your Skills
+          </Label>
+          <Textarea
+            id="skills"
+            placeholder="e.g. JavaScript, React"
+            value={skills}
+            onChange={(e) => setSkills(e.target.value)}
+            className="bg-slate-600 placeholder-slate-400 text-white"
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="interests" className="text-slate-200">
+            Your Interests
+          </Label>
+          <Textarea
+            id="interests"
+            placeholder="e.g. AI, Web Development"
+            value={interests}
+            onChange={(e) => setInterests(e.target.value)}
+            className="bg-slate-600 placeholder-slate-400 text-white"
+          />
+        </div>
+      </CardContent>
+
+      <CardFooter className="flex justify-between p-6">
+        <Button variant="secondary" type="reset" onClick={() => {
+          setSkills('')
+          setInterests('')
+        }}>
+          Reset
+        </Button>
+        <Button onClick={handleSubmit} disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              Generating…
+            </>
+          ) : (
+            'Get Pathway'
+          )}
+        </Button>
+      </CardFooter>
+    </Card>
+  )
+}
+
+export default UserInputForm
