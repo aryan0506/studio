@@ -103,7 +103,7 @@ const SuggestionDisplay = () => {
   }
 
   return (
-    <Card className="bg-transparent shadow-md rounded-lg h-full">
+    <Card className="bg-transparent shadow-md rounded-lg h-max">
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-center text-slate-100">
           Recommended Career Paths
